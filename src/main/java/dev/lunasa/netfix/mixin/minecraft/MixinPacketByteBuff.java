@@ -13,6 +13,9 @@ public abstract class MixinPacketByteBuff extends ByteBuf {
     @Shadow
     public abstract int readVarInt();
 
+    @Shadow
+    public abstract ByteBuf readBytes(int i);
+
     /**
      * @reason Remove unsafe {@link ByteBuf#array()}
      * @author Lunasa
@@ -26,8 +29,15 @@ public abstract class MixinPacketByteBuff extends ByteBuf {
         } else if (length < 0) {
             throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
         } else {
-            byte[] bytes = new byte[length];
-            this.readBytes(bytes);
+            byte[] bytes;
+
+            var buf = this.readBytes(length);
+
+            if (buf.hasArray()) bytes = buf.array(); else {
+                bytes = new byte[length];
+                buf.readBytes(length); buf.release(); // since this allocates a direct buffer
+            }
+
             String string = new String(bytes, Charsets.UTF_8);
 
             if (string.length() > maxLength) {

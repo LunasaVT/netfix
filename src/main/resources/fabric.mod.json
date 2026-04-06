@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "id": "netfix",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "name": "netfix",
   "description": "Uses modern Netty instead of the old stuff",
-  "license": "Unlicense",
+  "license": "GPL-v3-or-later",
   "environment": "client",
   "icon": "assets/netfix/icon.png",
   "entrypoints": {},

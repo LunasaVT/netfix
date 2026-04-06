@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "dev.lunasa"
-version = "1.0.1"
+version = "1.0.2"
 
 val shadow by configurations.creating { isCanBeResolved = true }
 

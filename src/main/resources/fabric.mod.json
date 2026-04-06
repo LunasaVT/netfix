@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "netfix",
+  "version": "1.0.0",
+  "name": "netfix",
+  "description": "Network fixes for Java 17+",
+  "license": "Unlicense",
+  "environment": "client",
+  "entrypoints": {},
+  "mixins": [
+    "netfix.mixins.json"
+  ],
+  "depends": {
+    "java": ">=17"
+  }
+}

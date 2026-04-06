@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.lunasa.netfix.mixin",
+  "compatibilityLevel": "JAVA_11",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "netty.MixinPlatformDependent0",
+    "patchy.MixinBlockingICFB",
+    "patchy.MixinBootstrap"
+  ]
+}

@@ -3,7 +3,7 @@
   "id": "netfix",
   "version": "1.0.0",
   "name": "netfix",
-  "description": "Network fixes for Java 17+",
+  "description": "Uses modern Netty instead of the old stuff",
   "license": "Unlicense",
   "environment": "client",
   "icon": "assets/netfix/icon.png",
@@ -12,6 +12,8 @@
     "netfix.mixins.json"
   ],
   "depends": {
-    "java": ">=17"
+    "fabricloader": "*",
+    "java": ">=17",
+    "minecraft": "*"
   }
 }

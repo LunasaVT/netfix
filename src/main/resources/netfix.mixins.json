@@ -7,8 +7,14 @@
     "defaultRequire": 1
   },
   "client": [
-    "netty.MixinPlatformDependent0",
+    "minecraft.MixinMultiplayerServerListPinger",
     "patchy.MixinBlockingICFB",
     "patchy.MixinBootstrap"
+  ],
+  "mixins": [
+    "minecraft.MixinClientConnection",
+    "minecraft.MixinConnectScreen$1",
+    "minecraft.MixinPacketByteBuff",
+    "minecraft.MixinServerNetworkIo"
   ]
 }

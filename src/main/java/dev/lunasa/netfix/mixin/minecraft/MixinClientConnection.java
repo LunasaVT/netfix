@@ -1,26 +1,15 @@
 package dev.lunasa.netfix.mixin.minecraft;
 
 import dev.lunasa.netfix.netty.EventLoopGroups;
-import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.NetfixBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.epoll.Epoll;
 import io.netty.channel.epoll.EpollSocketChannel;
 import io.netty.channel.local.LocalChannel;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.network.ClientConnection;
-import net.minecraft.network.NetworkSide;
-import net.minecraft.network.PacketEncoder;
-import net.minecraft.network.SizePrepender;
-import net.minecraft.network.SplitterHandler;
+import net.minecraft.network.*;
 import net.minecraft.util.Lazy;
 import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.Mixin;
@@ -59,7 +48,8 @@ public class MixinClientConnection {
             protected void initChannel(Channel channel) {
                 try {
                     channel.config().setOption(ChannelOption.TCP_NODELAY, true);
-                } catch (ChannelException _) {}
+                } catch (ChannelException _) {
+                }
 
                 channel.pipeline()
                         .addLast("timeout", new ReadTimeoutHandler(30))

@@ -7,10 +7,6 @@ import net.minecraft.util.PacketByteBuf;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
-
-import java.nio.charset.Charset;
 
 @Mixin(PacketByteBuf.class)
 public abstract class MixinPacketByteBuff extends ByteBuf {
@@ -30,7 +26,8 @@ public abstract class MixinPacketByteBuff extends ByteBuf {
         } else if (length < 0) {
             throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
         } else {
-            byte[] bytes = new byte[length]; this.readBytes(bytes);
+            byte[] bytes = new byte[length];
+            this.readBytes(bytes);
             String string = new String(bytes, Charsets.UTF_8);
 
             if (string.length() > maxLength) {

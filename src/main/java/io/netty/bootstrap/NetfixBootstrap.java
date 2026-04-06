@@ -12,7 +12,8 @@ import java.net.SocketAddress;
 public class NetfixBootstrap extends AbstractBootstrap<NetfixBootstrap, Channel> {
     private final NetfixBootstrapConfig config = new NetfixBootstrapConfig(this);
 
-    public NetfixBootstrap() {}
+    public NetfixBootstrap() {
+    }
 
     private NetfixBootstrap(NetfixBootstrap bootstrap) {
         super(bootstrap);

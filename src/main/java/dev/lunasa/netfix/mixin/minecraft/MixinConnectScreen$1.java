@@ -32,21 +32,21 @@ import java.net.UnknownHostException;
 // used in mc < 1.17
 @Mixin(targets = "net.minecraft.client.gui.screen.ConnectScreen$1")
 public abstract class MixinConnectScreen$1 {
-	@Redirect(
-			method = "run",
-			at = @At(
-					value = "INVOKE",
-					target = "Ljava/net/InetAddress;getByName(Ljava/lang/String;)Ljava/net/InetAddress;"
-			),
-			remap = false
-	)
-	private InetAddress setHostnameToIpAddressToAvoidReversedDnsLookupOnGetHostname_connect(String address) throws UnknownHostException {
-		// vanilla
-		InetAddress inetAddress = InetAddress.getByName(address);
+    @Redirect(
+            method = "run",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ljava/net/InetAddress;getByName(Ljava/lang/String;)Ljava/net/InetAddress;"
+            ),
+            remap = false
+    )
+    private InetAddress setHostnameToIpAddressToAvoidReversedDnsLookupOnGetHostname_connect(String address) throws UnknownHostException {
+        // vanilla
+        InetAddress inetAddress = InetAddress.getByName(address);
 
-		// patch it
-		inetAddress = InetAddressPatcher.patch(address, inetAddress);
+        // patch it
+        inetAddress = InetAddressPatcher.patch(address, inetAddress);
 
-		return inetAddress;
-	}
+        return inetAddress;
+    }
 }

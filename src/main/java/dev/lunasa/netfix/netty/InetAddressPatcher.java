@@ -29,17 +29,15 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class InetAddressPatcher {
-	private static final Logger LOGGER = LogManager.getLogger("netfix/patcher");
+    private static final Logger LOGGER = LogManager.getLogger("netfix/patcher");
 
-	@SuppressWarnings("UnstableApiUsage")
-	public static InetAddress patch(String hostName, InetAddress addr) throws UnknownHostException
-	{
-		if (InetAddresses.isInetAddress(hostName))
-		{
-			InetAddress patched = InetAddress.getByAddress(addr.getHostAddress(), addr.getAddress());
-			LOGGER.debug("Patching ip-only InetAddresses from {} to {}", addr, patched);
-			addr = patched;
-		}
-		return addr;
-	}
+    @SuppressWarnings("UnstableApiUsage")
+    public static InetAddress patch(String hostName, InetAddress addr) throws UnknownHostException {
+        if (InetAddresses.isInetAddress(hostName)) {
+            InetAddress patched = InetAddress.getByAddress(addr.getHostAddress(), addr.getAddress());
+            LOGGER.debug("Patching ip-only InetAddresses from {} to {}", addr, patched);
+            addr = patched;
+        }
+        return addr;
+    }
 }

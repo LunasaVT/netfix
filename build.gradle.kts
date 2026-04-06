@@ -6,7 +6,7 @@ plugins {
 group = "dev.lunasa"
 version = "1.0.1"
 
-val shadow by configurations.creating { isCanBeResolved = false }
+val shadow by configurations.creating { isCanBeResolved = true }
 
 repositories {
     maven {
@@ -21,6 +21,11 @@ dependencies {
     "modImplementation"("net.fabricmc:fabric-loader:0.18.4")
 
     shadow(api("io.netty:netty-all:4.2.12.Final")!!)
+}
+
+tasks.jar {
+    shadow.forEach { from(zipTree(it)) { exclude("META-INF", "META-INF/**") } }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 ploceus {

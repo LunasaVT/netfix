@@ -6,7 +6,7 @@ You can get it from the [Releases](https://github.com/LunasaVT/netfix/releases/t
 
 ---
 
-## Support
+### Support
 
 Support is offered in our [Discord server](https://discord.gg/Kvkk4u272Z).
 

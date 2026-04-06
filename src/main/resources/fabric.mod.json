@@ -14,6 +14,6 @@
   "depends": {
     "fabricloader": "*",
     "java": ">=17",
-    "minecraft": "*"
+    "minecraft": "~1.8.9"
   }
 }

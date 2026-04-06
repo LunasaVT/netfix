@@ -6,6 +6,7 @@
   "description": "Network fixes for Java 17+",
   "license": "Unlicense",
   "environment": "client",
+  "icon": "assets/netfix/icon.png",
   "entrypoints": {},
   "mixins": [
     "netfix.mixins.json"
